@@ -1,9 +1,18 @@
 n = int(input())
 arr = list(map(int, input().split()))
-demi = []
+demi = arr.copy()
+sum = 0
 
 for i in range(n):
-    for j in range(2, arr[i]+1):
-        if arr[i]%j == 0:
-            demi.append(arr[i])
-print(len(demi))
+    if arr[i] == 1:
+            demi[i] = 0
+    else:
+         for j in range(2, arr[i]):
+            if demi[i]%j == 0:
+                demi[i] = 0
+
+for j in range(n):
+    if demi[j] != 0:
+         sum += 1
+
+print(sum)
